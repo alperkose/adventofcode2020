@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func DisabledTestForwardInstruction(t *testing.T) {
+func TestForwardInstruction(t *testing.T) {
 	testCases := []struct {
 		desc             string
 		heading          Heading
@@ -43,7 +43,7 @@ func TestForwardByWaypointInstruction(t *testing.T) {
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
 			ship := Ship{East, 0, 0, tC.wpx, tC.wpy}
-			instruction := FromString(tC.instr)
+			instruction := FromStringUsingWP(tC.instr)
 			finalShip := instruction.Apply(ship)
 			assert.Equal(t, tC.expected, finalShip.String())
 		})

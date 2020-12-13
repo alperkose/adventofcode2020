@@ -5,7 +5,7 @@ import (
 	"io"
 )
 
-func Parse(source io.Reader) []Instruction {
+func Parse(source io.Reader, toInstruction func(string) Instruction) []Instruction {
 	bufReader := bufio.NewReader(source)
 	instructions := []Instruction{}
 	for {
@@ -13,7 +13,7 @@ func Parse(source io.Reader) []Instruction {
 		if err != nil && err == io.EOF {
 			break
 		}
-		instructions = append(instructions, FromString(string(line)))
+		instructions = append(instructions, toInstruction(string(line)))
 	}
 	return instructions
 }

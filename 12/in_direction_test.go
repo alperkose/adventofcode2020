@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func DisabledTestMoveInDirectionInstruction(t *testing.T) {
+func TestMoveInDirectionInstruction(t *testing.T) {
 	testCases := []struct {
 		desc     string
 		heading  Heading
@@ -28,7 +28,7 @@ func DisabledTestMoveInDirectionInstruction(t *testing.T) {
 		})
 	}
 }
-func TestMoveInDirectionInstruction(t *testing.T) {
+func TestMoveInDirectionInstructionUsingWaypoint(t *testing.T) {
 	testCases := []struct {
 		desc     string
 		heading  Heading
@@ -43,7 +43,7 @@ func TestMoveInDirectionInstruction(t *testing.T) {
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
 			ship := Ship{tC.heading, 0, 0, 10, 1}
-			instruction := FromString(tC.instr)
+			instruction := FromStringUsingWP(tC.instr)
 			finalShip := instruction.Apply(ship)
 			assert.Equal(t, tC.expected, finalShip.String())
 		})

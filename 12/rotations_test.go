@@ -19,7 +19,7 @@ func TestWaypointLeftRotationInstruction(t *testing.T) {
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
 			ship := Ship{East, 0, 0, 10, 1}
-			instruction := FromString(tC.instr)
+			instruction := FromStringUsingWP(tC.instr)
 			finalShip := instruction.Apply(ship)
 			assert.Equal(t, tC.expected, finalShip.String())
 		})
@@ -39,13 +39,13 @@ func TestWaypointRightRotationInstruction(t *testing.T) {
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
 			ship := Ship{East, 0, 0, 10, 1}
-			instruction := FromString(tC.instr)
+			instruction := FromStringUsingWP(tC.instr)
 			finalShip := instruction.Apply(ship)
 			assert.Equal(t, tC.expected, finalShip.String())
 		})
 	}
 }
-func DisabledTestLeftRotationInstruction(t *testing.T) {
+func TestLeftRotationInstruction(t *testing.T) {
 	testCases := []struct {
 		desc     string
 		heading  Heading
@@ -75,7 +75,7 @@ func DisabledTestLeftRotationInstruction(t *testing.T) {
 	}
 }
 
-func DisabledTestRightRotationInstruction(t *testing.T) {
+func TestRightRotationInstruction(t *testing.T) {
 	testCases := []struct {
 		desc     string
 		heading  Heading
