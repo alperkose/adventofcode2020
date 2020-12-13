@@ -10,6 +10,6 @@ func main() {
 	bus, waitTime := FindEarliestBus(earliestTimeToLeave, buses)
 	fmt.Println("Earliest bus to take:", bus, ", wait time:", waitTime, "-->", (waitTime * int(bus)))
 	// schduleStart := ParallelFind(buses, 142889000000251, 100000000000)
-	schduleStart := EarliestOrderedTime(buses)
+	schduleStart := EarliestConsecutiveDepartureTime(buses)
 	fmt.Println("Contest earliest bus time:", schduleStart)
 }

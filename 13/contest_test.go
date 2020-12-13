@@ -24,7 +24,7 @@ func TestFindOrdering(t *testing.T) {
 	}
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
-			earliestTime := EarliestOrderedTime(tC.input)
+			earliestTime := EarliestConsecutiveDepartureTime(tC.input)
 			assert.Equal(t, tC.expected, earliestTime)
 		})
 	}
